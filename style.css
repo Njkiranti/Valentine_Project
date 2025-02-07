@@ -1,0 +1,186 @@
+/* General Styles */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  transition: background 2s ease-in-out;
+}
+
+.container {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-in-out;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #ff6f61;
+  margin-bottom: 20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+button {
+  padding: 15px 30px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+}
+
+#yesButton {
+  background: #ff6f61;
+  color: white;
+  font-weight: bold;
+}
+
+#noButton {
+  background: #ccc;
+  color: #333;
+  font-weight: bold;
+  position: relative;
+}
+
+button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+#yesButton:hover {
+  background: #ff4a3d;
+}
+
+#noButton:hover {
+  background: #bbb;
+}
+
+.hidden {
+  display: none;
+}
+
+#congratsMessage {
+  margin-top: 30px;
+  animation: celebrate 2s infinite;
+  font-size: 2rem;
+  color: #ff4a3d;
+}
+
+/* Smooth fade-in effect */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(-20px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
+  }
+}
+
+/* Celebrate pop effect */
+@keyframes celebrate {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2);
+  }
+}
+
+/* Heart Animation (for "Yes" click) */
+@keyframes hearts {
+  0% {
+      transform: translateY(0);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(100vh);
+      opacity: 0;
+  }
+}
+
+.heart {
+  position: absolute;
+  font-size: 24px;
+  color: red;
+  opacity: 0.8;
+  animation: hearts linear infinite;
+}
+
+/* Firework Effect */
+@keyframes fireworks {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+  100% {
+      transform: scale(3);
+      opacity: 0;
+  }
+}
+
+.firework {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: gold;
+  border-radius: 50%;
+  animation: fireworks 1s ease-out;
+}
+
+/* Confetti Animation */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #ff6f61;
+  animation: confetti-fall 5s linear infinite;
+}
+
+@keyframes confetti-fall {
+  0% {
+      transform: translateY(-100vh) rotate(0deg);
+  }
+  100% {
+      transform: translateY(100vh) rotate(720deg);
+  }
+}
+
+/* No Button Moves Away Effect */
+@keyframes moveNo {
+  0% {
+      transform: translate(0, 0);
+  }
+  100% {
+      transform: translate(var(--randomX, 50px), var(--randomY, 50px));
+  }
+}
+
+#noButton:active {
+  animation: moveNo 0.5s ease-out;
+}
